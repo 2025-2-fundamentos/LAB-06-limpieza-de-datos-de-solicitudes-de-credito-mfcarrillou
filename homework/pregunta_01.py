@@ -21,10 +21,6 @@ def pregunta_01():
     
     # Leer el archivo CSV con separador de punto y coma
     df = pd.read_csv("files/input/solicitudes_de_credito.csv", sep=";", index_col=0)
-        
-    # Limpiar espacios en blanco al inicio y final de todas las celdas de texto
-    for col in df.select_dtypes(include=['object']).columns:
-        df[col] = df[col].str.strip()
     
     # Convertir todo el texto a minúsculas
     for col in df.select_dtypes(include=['object']).columns:
@@ -38,7 +34,6 @@ def pregunta_01():
         df[col] = df[col].str.replace('$', '', regex=False)
         df[col] = df[col].str.replace(',', '', regex=False)
         df[col] = df[col].str.replace('.00', '', regex=False)
-        df[col] = df[col].str.strip()
 
     # Limpiar columnas numéricas
     #-- monto_del_credito
